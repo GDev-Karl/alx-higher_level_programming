@@ -6,7 +6,7 @@ count = len(sys.argv) - 1
 
 if count == 0:
     print("{} arguments.".format(count))
-else
+else:
     if count == 1:
         print("{} argument:".format(count))
     else:
