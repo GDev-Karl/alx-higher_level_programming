@@ -1,0 +1,1 @@
+## fisrt project on python allowing us to discover python
