@@ -14,7 +14,7 @@ int check_cycle(listint_t *list)
 	if (list == NULL)
 		return (0);
 
-	while (slow_pointer && fast_pointer && fast_pointer->next->next)
+	while (slow_pointer && fast_pointer && fast_pointer->next)
 	{
 		slow_pointer = slow_pointer->next;
 		fast_pointer = fast_pointer->next->next;
