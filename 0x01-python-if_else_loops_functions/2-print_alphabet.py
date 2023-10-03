@@ -4,5 +4,5 @@
 ascii_code = 97
 
 while ascii_code <= 122:
-    print(chr(ascii_code), end="")
+    print(f"{chr(ascii_code)}", end="")
     ascii_code = ascii_code + 1
