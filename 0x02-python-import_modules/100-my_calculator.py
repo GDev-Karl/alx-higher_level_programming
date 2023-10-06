@@ -11,8 +11,8 @@ if __name__ == "__main__":
     elif argv[2] not in ops:
         print("Unknown operator. Available operators: +, -, * and /")
     else:
-        a = argv[1]
-        b = argv[3]
+        a = int(argv[1])
+        b = int(argv[3])
         op = argv[2]
         result = (
             add(a, b) if op == "+" else
