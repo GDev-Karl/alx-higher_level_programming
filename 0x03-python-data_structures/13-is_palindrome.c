@@ -1,71 +1,57 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "lists.h"
 
 /**
- * reverse_listint - reverses a linked list
- * @head: pointer to the first node in the list
- * Return: pointer to the first node in the new list
- */
-void reverse_listint(listint_t **head)
-{
-	listint_t *prev = NULL;
-	listint_t *current = *head;
-	listint_t *next = NULL;
-
-	while (current)
-	{
-		next = current->next;
-		current->next = prev;
-		prev = current;
-		current = next;
-	}
-
-	*head = prev;
-}
-
-/**
- * is_palindrome - checks if a linked list is a palindrome
- * @head: double pointer to the linked list
+ * is_palindrome - checks if a singly linked list is a palindrome
+ * @head: head of the list
  *
- * Return: 1 if it is, 0 if not
+ * Return: 1 if the list is a palindrome, 0 otherwise
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *slow = *head, *fast = *head, *temp = *head, *dup = NULL;
-
 	if (*head == NULL || (*head)->next == NULL)
 		return (1);
 
-	while (1)
+	listint_t *slow = *head;
+	listint_t *fast = *head;
+	listint_t *prev = NULL;
+	listint_t *second_half;
+
+	while (fast != NULL && fast->next != NULL)
 	{
 		fast = fast->next->next;
-		if (!fast)
-		{
-			dup = slow->next;
-			break;
-		}
-		if (!fast->next)
-		{
-			dup = slow->next->next;
-			break;
-		}
+		prev = slow;
 		slow = slow->next;
 	}
 
-	reverse_listint(&dup);
-
-	while (dup && temp)
+	/* If the number of elements in the list is odd, skip the middle element */
+	if (fast != NULL)
 	{
-		if (temp->n == dup->n)
-		{
-			dup = dup->next;
-			temp = temp->next;
-		}
-		else
-			return (0);
+		slow = slow->next;
 	}
 
-	if (!dup)
-		return (1);
+	/* Reverse the second half of the list */
+	prev->next = NULL;
+	while (slow != NULL)
+	{
+		listint_t *temp = slow->next;
+		slow->next = second_half;
+		second_half = slow;
+		slow = temp;
+	}
 
-	return (0);
+	/* Compare the first half and the reversed second half */
+	listint_t *p1 = *head;
+	listint_t *p2 = second_half;
+
+	while (p1 != NULL && p2 != NULL)
+	{
+		if (p1->n != p2->n)
+			return (0); /* Not a palindrome */
+		p1 = p1->next;
+		p2 = p2->next;
+	}
+
+	return (1); /* It's a palindrome */
 }
