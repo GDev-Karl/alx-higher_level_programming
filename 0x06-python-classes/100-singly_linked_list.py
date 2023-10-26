@@ -1,15 +1,15 @@
 #!/usr/bin/python3
-"""module for a singly linked list"""
+"""Define a singly linked list"""
 
 
 class Node:
-    """"this class defines a node"""
+    """"Node"""
 
     def __init__(self, data, next_node=None):
         """
         Args:
             data:the data of the node
-            next_node: the next node
+            next_node: the node after this node
         """
 
         self.data = data
@@ -17,28 +17,30 @@ class Node:
 
     @property
     def data(self):
-        """gets data """
-
+        """
+        gets the attribute data
+        """
         return (self.__data)
 
     @data.setter
     def data(self, value):
-        """sets data """
-
+        """sets the attribute data"""
         if not isinstance(value, int):
             raise TypeError('data must be an integer')
         self.__data = value
 
     @property
     def next_node(self):
-        """get next_node attribute"""
-
+        """
+        get the next node
+        """
         return (self.__next_node)
 
     @next_node.setter
     def next_node(self, value):
-        """set  next node"""
-
+        """
+        set value of next node
+        """
         if (value is not None and not isinstance(value, Node)):
             raise TypeError('next_node must be a Node object')
 
@@ -46,28 +48,30 @@ class Node:
 
 
 class SinglyLinkedList:
-    """this class defines a singly linked list"""
+    """defines a singly linked list"""
 
     def __init__(self):
-                """
+        """
         Args:
-            head:the head of the list
+            head: the head of the list
         """
 
         self.head = None
 
     def __str__(self):
-        """make list printable"""
-
-        printsll = ""
+        """
+        make list printable
+        """
+        our_list = ""
         location = self.head
         while location:
-            printsll += str(location.data) + "\n"
+            our_list += str(location.data) + "\n"
             location = location.next_node
-        return printsll[:-1]
+        return our_list[:-1]
 
     def sorted_insert(self, value):
-        """insert in a sorted fashion
+        """
+        insert in a sorted fashion
         Args:
             value: what the value will be on the node
         """
