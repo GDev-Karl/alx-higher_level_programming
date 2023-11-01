@@ -70,6 +70,7 @@ class Rectangle:
         for y in range(self.height):
             for x in range(self.width):
                 rectangle += "#"
-            rectangle += "\n"
+            if y < self.height - 1:
+                rectangle += "\n"
 
         return rectangle
