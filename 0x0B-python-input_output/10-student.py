@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Module on JSON """
+""" Student module """
 
 
 class Student:
@@ -14,11 +14,11 @@ class Student:
         self.last_name = last_name
         self.age = age
 
-
-    def to_json(self, attrs=None):
+    def to_json(self, attrs):
         """
-        Get a dictionary representation of the Student
+        dictionary representation of the Student
         """
-        if (type(attrs) == list and all(type(ele) == str for ele in attrs)):
+        if (isinstance(list, attrs) and
+                all(isinstance(str, elt) for elt in attrs)):
             return {k: getattr(self, k) for k in attrs if hasattr(self, k)}
         return self.
