@@ -21,4 +21,4 @@ class Student:
         if (isinstance(list, attrs) and
                 all(isinstance(str, elt) for elt in attrs)):
             return {k: getattr(self, k) for k in attrs if hasattr(self, k)}
-        return self.
+        return self.__dict__
